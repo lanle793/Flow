@@ -42,10 +42,16 @@ public class Lines : MonoBehaviour
         for (int i = 1; i < numPts; i++)
         {
             string coord = coords[i-1];
-            string[] vals = coord.Split(',');
-            float x = float.Parse(vals[0]);
-            float y = float.Parse(vals[1]);
-            float z = float.Parse(vals[2]);
+            //string[] vals = coord.Split(',');
+            string[] vals = coord.Split(null);
+            float x = float.Parse(vals[0])/150;
+            float y = float.Parse(vals[1])/150;
+            float z = float.Parse(vals[2])/150 - 2;
+            /*
+            if (i == 1 || i == 201) {
+                Debug.Log(x + " " + y + " " + z);
+            }
+            */
             Vector3 pt = new Vector3(x,y,z);
             vP[i] = pt;
         }

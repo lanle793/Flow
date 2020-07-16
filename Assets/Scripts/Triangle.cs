@@ -34,7 +34,7 @@ public class Triangle : MonoBehaviour
     void MakeMeshData()
     {
         // create an array of vertices
-        vertices = new Vector3[]{new Vector3(0, 0, 0), new Vector3(0, 0, 1), new Vector3(1, 0, 0)};
+        vertices = new Vector3[]{new Vector3(0, 0, 0), new Vector3(0, 0.25f, 0), new Vector3(0.35f, 0.125f, 0)};
         
         // create an array of integers
         triangles = new int[]{0, 1, 2};
@@ -47,13 +47,13 @@ public class Triangle : MonoBehaviour
         mesh.triangles = triangles;
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collide");
         rend.material.color = Color.yellow;
     }
 
-    void OnCollisionExit(Collision col)
+    void OnTriggerExit(Collider other)
     {
         rend.material.color = Color.blue;
     }

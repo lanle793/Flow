@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private RigidBody rb;
+    private Rigidbody rb;
     public float speed;
     private int score;
     public Text scoreText;
@@ -12,7 +13,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<RigidBody>();
+        rb = GetComponent<Rigidbody>();
         score = 0;
         SetScoreText();
     }
@@ -33,7 +34,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Triangle")) 
         {
-            other.gameObject.SetActive(false);
+            Debug.Log("Add 1 point");
+            //other.gameObject.SetActive(false);
             score = score + 1;
             SetScoreText();
         }
@@ -41,6 +43,10 @@ public class PlayerController : MonoBehaviour
 
     void SetScoreText()
     {
-        scoreText.text = "Score: " + score.toString();
+        scoreText.text = "Score: " + score.ToString();
     }
 }
+
+
+
+// Adapted from: https://www.youtube.com/watch?v=az7w9nwQRDU

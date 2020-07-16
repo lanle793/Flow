@@ -41,7 +41,9 @@
      <Compile Include="Assets\Scripts\Movement.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Triangle.cs" />
+     <None Include="Assets\BomJ Ladle\README.txt" />
      <None Include="Assets\Resources\Points.txt" />
+     <None Include="Assets\Resources\Triangles.txt" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2019.4.3f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
