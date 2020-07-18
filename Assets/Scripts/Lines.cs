@@ -8,10 +8,10 @@ using System;
 public class Lines : MonoBehaviour
 {
     public GameObject mainPt;
-    LineRenderer lineRenderer;
-    string[] coords;
+    private LineRenderer lineRenderer;
+    private string[] coords;
     private Vector3[] vP;
-    int numPts = 20;
+    const int NUM_PTS = 450;
     private Renderer rend;
 
     // Start is called before the first frame update
@@ -24,12 +24,18 @@ public class Lines : MonoBehaviour
         rend.material.color = Color.red;    // set line color
 
         string path = "Assets/Resources/Points.txt";
+
         // Read the text directly from the Points.txt file
         StreamReader reader = new StreamReader(path); 
         string content = reader.ReadToEnd();
         reader.Close();
-        coords = content.Split(new string[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+        string[] full = content.Split(new string[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+        coords = new string[NUM_PTS];
 
+        int offset = 275;
+        int desIndex = 0;
+        int length = NUM_PTS;
+        Array.Copy(full, offset, coords, desIndex, length);
         DrawLine();
     }
 
@@ -39,8 +45,9 @@ public class Lines : MonoBehaviour
         
     }
 
+    // Draw lines based on the provided points
     void DrawLine() {
-        numPts = coords.Length + 1;
+        int numPts = coords.Length + 1;
         Debug.Log("Number of points: " + numPts);
         vP = new Vector3[numPts];
         vP[0] = mainPt.transform.position;
@@ -49,14 +56,14 @@ public class Lines : MonoBehaviour
             string coord = coords[i-1];
             //string[] vals = coord.Split(',');
             string[] vals = coord.Split(null);
-            float x = float.Parse(vals[0])/150;
-            float y = float.Parse(vals[1])/150;
-            float z = float.Parse(vals[2])/150 - 2;
-            /*
-            if (i == 1 || i == 201) {
+            float x = float.Parse(vals[0])/150 - 1.25f;
+            float y = float.Parse(vals[1])/150 + 1.5f;
+            float z = float.Parse(vals[2])/150 - 5.5f;
+
+            if (i == 1) {
                 Debug.Log(x + " " + y + " " + z);
             }
-            */
+
             Vector3 pt = new Vector3(x,y,z);
             vP[i] = pt;
         }
