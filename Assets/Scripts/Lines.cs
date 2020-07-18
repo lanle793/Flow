@@ -12,11 +12,16 @@ public class Lines : MonoBehaviour
     string[] coords;
     private Vector3[] vP;
     int numPts = 20;
+    private Renderer rend;
 
     // Start is called before the first frame update
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.startWidth = 0.01f;    // set line width
+
+        rend = GetComponent<Renderer>();
+        rend.material.color = Color.red;    // set line color
 
         string path = "Assets/Resources/Points.txt";
         // Read the text directly from the Points.txt file
