@@ -18,7 +18,7 @@ public class Lines : MonoBehaviour
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.startWidth = 0.01f;    // set line width
+        lineRenderer.startWidth = 0.005f;    // set line width
 
         rend = GetComponent<Renderer>();
         rend.material.color = Color.red;    // set line color
@@ -56,9 +56,9 @@ public class Lines : MonoBehaviour
             string coord = coords[i-1];
             //string[] vals = coord.Split(',');
             string[] vals = coord.Split(null);
-            float x = float.Parse(vals[0])/150 - 1.25f;
-            float y = float.Parse(vals[1])/150 + 1.5f;
-            float z = float.Parse(vals[2])/150 - 5.5f;
+            float x = float.Parse(vals[0])/600 - 2.5f;
+            float y = float.Parse(vals[1])/600 + 1.7f;
+            float z = float.Parse(vals[2])/600 - 5;
 
             if (i == 1) {
                 Debug.Log(x + " " + y + " " + z);
