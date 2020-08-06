@@ -24,6 +24,24 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxis("Horizontal") * speed;
         float v = Input.GetAxis("Vertical") * speed;
 
+        var rotationVector = transform.rotation.eulerAngles;
+
+        if (h > 0) {
+            Debug.Log("Right");
+            rotationVector.z = 0;
+            transform.rotation = Quaternion.Euler(rotationVector);
+        } else if (h < 0) {
+            Debug.Log("Left");
+            rotationVector.z = 10;
+            transform.rotation = Quaternion.Euler(rotationVector);
+        }
+
+        if (v > 0) {
+            Debug.Log("Forward");
+        } else if (v < 0) {
+            Debug.Log("Backward");
+        }
+
         Vector3 vel = rb.velocity;
         vel.x = h;
         vel.z = v;
